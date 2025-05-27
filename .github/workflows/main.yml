@@ -1,25 +1,19 @@
-name: First GitHub Actions Workflow
+name: Hello World Workflow
 
 on:
   push:
-    branches:
-      - main  # Triggers the workflow on push to the 'main' branch
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build:
+  build_and_release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+      - name: Say Hello
+        run: echo "Hello, World from GitHub Actions!"
